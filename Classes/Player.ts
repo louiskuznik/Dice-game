@@ -4,12 +4,12 @@ export default class Player {
     public name: string
     public score: number[]
 
-    constructor(_score: number[]) {
-        this.score = _score
+    constructor(_name: string) {
+        this.name = _name
+        this.score = []
     }
 
-    play(cup: Cup): void {
-        this.score = [1,1]
+    play(): void {
     }
 
     displayScore(): string {

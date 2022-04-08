@@ -1,14 +1,15 @@
-import Dice from "./Dice";
+import Dice from "../Interfaces/Dice";
 
 export default class Cup implements Dice {
     public value: number;
 
-    constructor(_value: number) {
-        this.value = _value;
+    constructor() {
+        this.value = 0;
     }
 
-    roll(): void {
+    roll(): number {
         this.value = Math.floor(Math.random() * (6 - 1 + 1) + 1)
+        return this.value
     }
 
     displayScore(): string {
