@@ -21,10 +21,28 @@ export default class Game extends Cup {
     }
 
     startGame(): void {
-
+        for(let i = 0; i < this.nbRound; i++) {
+            let maxValueOfRound = Math.max.apply(Math, this.players.map(function(o) { return o.score[i]; }))
+            this.players.forEach(player => {
+                if(maxValueOfRound == player.score[i]) {
+                    player.scoreGlobal += 1
+                }
+            });
+        }
     }
 
-    displayWinner(player: Player): string {
-        return `Winner is ${player}`
+    displayWinner(): string {
+        let maxValue = Math.max.apply(Math, this.players.map(function(o) { return o.scoreGlobal; }))
+        let winner: string = ""
+        this.players.forEach(player => {
+            if(maxValue == player.scoreGlobal) {
+                if(winner == "") {
+                    winner += player.name
+                } else {
+                    winner += ` and ${player.name}`
+                }
+            }
+        });
+        return `Winner is ${winner}`
     }
 }
